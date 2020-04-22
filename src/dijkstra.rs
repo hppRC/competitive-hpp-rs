@@ -5,6 +5,8 @@ use std::collections::BinaryHeap;
 ///
 /// Example:
 /// ```
+/// use competitive_hpp::dijkstra::Dijkstra;
+///
 /// let edges: Vec<(usize, usize, i64)> = vec![(0, 1, 1),(0, 2, 6),(1, 3, 2)];
 ///
 /// //Dijkstra::new(vertex num, edges, start vertex)

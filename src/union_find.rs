@@ -2,13 +2,15 @@
 ///
 /// Example:
 /// ```
+/// use competitive_hpp::union_find::UnionFind;
+///
 /// let mut uf = UnionFind::new(5);
 /// uf.union(0, 1);
 /// uf.union(2, 3);
 /// uf.union(1, 4);
 ///
 /// uf.find(1); // 0
-/// uf.same(0, 1) // true
+/// uf.same(0, 1); // true
 /// uf.group_size(0); // 3
 /// ```
 #[derive(Clone, Debug)]
