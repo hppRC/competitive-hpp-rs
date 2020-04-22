@@ -1,6 +1,6 @@
 // re-export frequently used std items
 pub use std::cmp::{max, min, Reverse};
-pub use std::collections::{BTreeMap, BTreeSet, VecDeque};
+pub use std::collections::{BTreeMap, BTreeSet, BinaryHeap, VecDeque};
 
 pub use itertools::Itertools;
 pub use memoise::memoise;
