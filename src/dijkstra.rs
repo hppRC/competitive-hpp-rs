@@ -6,7 +6,7 @@ use std::collections::BinaryHeap;
 /// Example:
 /// ```
 /// use competitive_hpp::dijkstra::Dijkstra;
-///
+/// // edge: Vec<(from, to, cost)>
 /// let edges: Vec<(usize, usize, i64)> = vec![(0, 1, 1),(0, 2, 6),(1, 3, 2)];
 ///
 /// //Dijkstra::new(vertex num, edges, start vertex)
@@ -21,7 +21,7 @@ pub struct Dijkstra {
 }
 
 impl Dijkstra {
-    pub fn new(n: usize, edges: &Vec<(usize, usize, i64)>, start: usize) -> Self {
+    pub fn new(n: usize, edges: &[(usize, usize, i64)], start: usize) -> Self {
         let inf = i64::max_value();
 
         let mut dist: Vec<i64> = vec![inf; n];
@@ -55,11 +55,11 @@ impl Dijkstra {
         }
     }
 
-    fn create_adjacency_list(n: usize, edges: &Vec<(usize, usize, i64)>) -> Vec<Vec<(usize, i64)>> {
+    fn create_adjacency_list(n: usize, edges: &[(usize, usize, i64)]) -> Vec<Vec<(usize, i64)>> {
         let mut adjacency_list: Vec<Vec<(usize, i64)>> = vec![vec![]; n];
 
-        for &(a, b, c) in edges {
-            adjacency_list[a].push((b, c))
+        for &(from, to, cost) in edges {
+            adjacency_list[from].push((to, cost))
         }
 
         adjacency_list
