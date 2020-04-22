@@ -9,7 +9,7 @@ repository = "https://github.com/hppRC/competitive-hpp-rs"
 license = "MIT"
 readme = "README.md"
 
-categories = ["Algorithms"] #https://crates.io/categories/
+categories = ["algorithms"] # https://crates.io/category_slugs
 keywords = []
 
 # homepage = "<url-to-homepage>"
