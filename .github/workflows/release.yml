@@ -57,11 +57,11 @@ jobs:
           use-cross: true
 
       - run: |
-          zip --junk-paths competitive-hpp-${{ matrix.target }} target/${{ matrix.target }}/release/competitive-hpp{,.exe}
+          zip --junk-paths competitive-hpp-rs-${{ matrix.target }} target/${{ matrix.target }}/release/competitive-hpp-rs{,.exe}
       - uses: actions/upload-artifact@v1
         with:
           name: build-${{ matrix.target }}
-          path: competitive-hpp-${{ matrix.target }}.zip
+          path: competitive-hpp-rs-${{ matrix.target }}.zip
 
   create-release:
     needs: [build]
@@ -107,6 +107,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.upload-url.outputs.url }}
-          asset_path: ./build-${{ matrix.target }}/competitive-hpp-${{ matrix.target }}.zip
-          asset_name: competitive-hpp-${{ matrix.target }}.zip
+          asset_path: ./build-${{ matrix.target }}/competitive-hpp-rs-${{ matrix.target }}.zip
+          asset_name: competitive-hpp-rs-${{ matrix.target }}.zip
           asset_content_type: application/zip
