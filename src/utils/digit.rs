@@ -2,6 +2,7 @@ pub trait DigitUtils {
     fn digit(self) -> u32;
     fn leftmost_digit(self) -> u8;
     fn rightmost_digit(self) -> u8;
+    fn nth_digit(self, n: u32) -> u8;
 }
 
 macro_rules! impl_digit_utils(($($ty:ty),*) => {
@@ -18,6 +19,10 @@ macro_rules! impl_digit_utils(($($ty:ty),*) => {
 
             fn rightmost_digit(self) -> u8 {
                 (self % 10) as u8
+            }
+
+            fn nth_digit(self, n:u32) -> u8 {
+                ((self / (10 as $ty).pow(n - 1)) % 10)  as u8
             }
         }
     )*
@@ -38,6 +43,10 @@ mod tests {
 
         assert_eq!(10u64.rightmost_digit(), 0);
         assert_eq!(202u64.rightmost_digit(), 2);
+
+        assert_eq!(4321u64.nth_digit(1), 1);
+        assert_eq!(4321u64.nth_digit(2), 2);
+        assert_eq!(4321u64.nth_digit(3), 3);
     }
     #[test]
     fn u32_utils_test() -> () {
@@ -49,6 +58,10 @@ mod tests {
 
         assert_eq!(10u32.rightmost_digit(), 0);
         assert_eq!(202u32.rightmost_digit(), 2);
+
+        assert_eq!(4321u32.nth_digit(1), 1);
+        assert_eq!(4321u32.nth_digit(2), 2);
+        assert_eq!(4321u32.nth_digit(3), 3);
     }
     #[test]
     fn i64_utils_test() -> () {
@@ -60,6 +73,10 @@ mod tests {
 
         assert_eq!(10i64.rightmost_digit(), 0);
         assert_eq!(202i64.rightmost_digit(), 2);
+
+        assert_eq!(4321i64.nth_digit(1), 1);
+        assert_eq!(4321i64.nth_digit(2), 2);
+        assert_eq!(4321i64.nth_digit(3), 3);
     }
     #[test]
     fn i32_utils_test() -> () {
@@ -71,6 +88,10 @@ mod tests {
 
         assert_eq!(10i32.rightmost_digit(), 0);
         assert_eq!(202i32.rightmost_digit(), 2);
+
+        assert_eq!(4321i32.nth_digit(1), 1);
+        assert_eq!(4321i32.nth_digit(2), 2);
+        assert_eq!(4321i32.nth_digit(3), 3);
     }
     #[test]
     fn usize_utils_test() -> () {
@@ -82,6 +103,10 @@ mod tests {
 
         assert_eq!(10usize.rightmost_digit(), 0);
         assert_eq!(202usize.rightmost_digit(), 2);
+
+        assert_eq!(4321usize.nth_digit(1), 1);
+        assert_eq!(4321usize.nth_digit(2), 2);
+        assert_eq!(4321usize.nth_digit(3), 3);
     }
     #[test]
     fn isize_utils_test() -> () {
@@ -93,5 +118,9 @@ mod tests {
 
         assert_eq!(10isize.rightmost_digit(), 0);
         assert_eq!(202isize.rightmost_digit(), 2);
+
+        assert_eq!(4321isize.nth_digit(1), 1);
+        assert_eq!(4321isize.nth_digit(2), 2);
+        assert_eq!(4321isize.nth_digit(3), 3);
     }
 }
