@@ -6,8 +6,8 @@ pub use itertools::Itertools;
 pub use memoise::memoise;
 
 // input! macro
-pub use proconio::input;
 pub use proconio::marker::{Bytes, Chars, Isize1, Usize1};
+pub use proconio::*;
 
 // num stuffs
 pub use num::complex::Complex;
