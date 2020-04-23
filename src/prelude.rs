@@ -2,7 +2,7 @@
 pub use std::cmp::{max, min, Reverse};
 pub use std::collections::{BTreeMap, BTreeSet, BinaryHeap, VecDeque};
 
-pub use itertools::Itertools;
+pub use itertools::*;
 pub use memoise::memoise;
 
 // input! macro
