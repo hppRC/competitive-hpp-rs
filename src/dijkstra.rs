@@ -66,32 +66,36 @@ impl Dijkstra {
     }
 }
 
-#[test]
-fn dijkstra_test() {
-    // | -------2------->|
-    // 0 --1--> 1 --2--> 3 --|
-    // |---6--> 2 --2--->|   |
-    // |<---------4----------|
-    let edges = vec![
-        (0, 1, 1),
-        (0, 2, 6),
-        (1, 3, 2),
-        (2, 3, 2),
-        (0, 3, 2),
-        (3, 0, 4),
-    ];
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn dijkstra_test() {
+        // | -------2------->|
+        // 0 --1--> 1 --2--> 3 --|
+        // |---6--> 2 --2--->|   |
+        // |<---------4----------|
+        let edges = vec![
+            (0, 1, 1),
+            (0, 2, 6),
+            (1, 3, 2),
+            (2, 3, 2),
+            (0, 3, 2),
+            (3, 0, 4),
+        ];
 
-    let dijkstra = Dijkstra::new(4, &edges, 0);
+        let dijkstra = Dijkstra::new(4, &edges, 0);
 
-    assert_eq!(dijkstra.dist[0], 0);
-    assert_eq!(dijkstra.dist[1], 1);
-    assert_eq!(dijkstra.dist[2], 6);
-    assert_eq!(dijkstra.dist[3], 2);
+        assert_eq!(dijkstra.dist[0], 0);
+        assert_eq!(dijkstra.dist[1], 1);
+        assert_eq!(dijkstra.dist[2], 6);
+        assert_eq!(dijkstra.dist[3], 2);
 
-    let dijkstra_another = Dijkstra::new(4, &edges, 1);
+        let dijkstra_another = Dijkstra::new(4, &edges, 1);
 
-    assert_eq!(dijkstra_another.dist[0], 6);
-    assert_eq!(dijkstra_another.dist[1], 0);
-    assert_eq!(dijkstra_another.dist[2], 12);
-    assert_eq!(dijkstra_another.dist[3], 2);
+        assert_eq!(dijkstra_another.dist[0], 6);
+        assert_eq!(dijkstra_another.dist[1], 0);
+        assert_eq!(dijkstra_another.dist[2], 12);
+        assert_eq!(dijkstra_another.dist[3], 2);
+    }
 }

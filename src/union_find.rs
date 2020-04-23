@@ -35,7 +35,7 @@ impl UnionFind {
         } else {
             let px = self.par[x];
             let root = self.find(px);
-            // reattach this edge
+            // reattach edges
             self.par[x] = root;
             root
         }
@@ -59,7 +59,7 @@ impl UnionFind {
         }
     }
 
-    pub fn same(&mut self, x: usize, y: usize) -> bool {
+    pub fn is_same(&mut self, x: usize, y: usize) -> bool {
         self.find(x) == self.find(y)
     }
 
@@ -69,46 +69,49 @@ impl UnionFind {
     }
 }
 
-#[test]
-fn union_find_test() {
-    let mut uf = UnionFind::new(5);
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn union_find_test() {
+        let mut uf = UnionFind::new(5);
 
-    // 0 ━━━━━ 1
-    // ┗━━━━━━ 4
-    //
-    // 2 ━━━━━ 3
+        // 0 ━━━━━ 1 ━━━━━ 4
+        //
+        // 2 ━━━━━ 3
 
-    uf.union(0, 1);
-    uf.union(2, 3);
-    uf.union(1, 4);
+        uf.union(0, 1);
+        uf.union(2, 3);
+        uf.union(1, 4);
 
-    assert_eq!(uf.find(0), uf.find(1));
-    assert_ne!(uf.find(0), uf.find(2));
-    assert_ne!(uf.find(0), uf.find(3));
-    assert_eq!(uf.find(0), uf.find(4));
-    assert_ne!(uf.find(1), uf.find(2));
-    assert_ne!(uf.find(1), uf.find(3));
-    assert_eq!(uf.find(1), uf.find(4));
-    assert_eq!(uf.find(2), uf.find(3));
-    assert_ne!(uf.find(2), uf.find(4));
-    assert_ne!(uf.find(3), uf.find(4));
+        assert_eq!(uf.find(0), uf.find(1));
+        assert_ne!(uf.find(0), uf.find(2));
+        assert_ne!(uf.find(0), uf.find(3));
+        assert_eq!(uf.find(0), uf.find(4));
+        assert_ne!(uf.find(1), uf.find(2));
+        assert_ne!(uf.find(1), uf.find(3));
+        assert_eq!(uf.find(1), uf.find(4));
+        assert_eq!(uf.find(2), uf.find(3));
+        assert_ne!(uf.find(2), uf.find(4));
+        assert_ne!(uf.find(3), uf.find(4));
 
-    assert!(uf.same(0, 1));
-    assert!(!uf.same(0, 2));
-    assert!(!uf.same(0, 3));
-    assert!(uf.same(0, 4));
+        assert!(uf.is_same(0, 1));
+        assert!(!uf.is_same(0, 2));
+        assert!(!uf.is_same(0, 3));
+        assert!(uf.is_same(0, 4));
 
-    assert_eq!(uf.rank[0], 0);
-    assert_eq!(uf.rank[1], 1);
-    assert_eq!(uf.rank[2], 0);
-    assert_eq!(uf.rank[3], 1);
-    assert_eq!(uf.rank[4], 1);
+        assert_eq!(uf.rank[0], 0);
+        assert_eq!(uf.rank[1], 1);
+        assert_eq!(uf.rank[2], 0);
+        assert_eq!(uf.rank[3], 1);
+        assert_eq!(uf.rank[4], 1);
 
-    assert_eq!(uf.group_size(0), 3);
-    assert_eq!(uf.group_size(1), 3);
-    assert_eq!(uf.group_size(2), 2);
-    assert_eq!(uf.group_size(3), 2);
-    assert_eq!(uf.group_size(4), 3);
+        assert_eq!(uf.group_size(0), 3);
+        assert_eq!(uf.group_size(1), 3);
+        assert_eq!(uf.group_size(2), 2);
+        assert_eq!(uf.group_size(3), 2);
+        assert_eq!(uf.group_size(4), 3);
 
-    // dbg!(uf);
+        // dbg!(uf);
+    }
 }

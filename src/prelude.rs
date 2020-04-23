@@ -17,3 +17,4 @@ pub use num::{abs, clamp, BigInt, BigRational, BigUint, Num, Rational};
 // re-exports
 pub use crate::dijkstra::Dijkstra;
 pub use crate::union_find::UnionFind;
+pub use crate::utils::*;
