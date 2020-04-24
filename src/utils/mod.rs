@@ -1,6 +1,9 @@
 pub mod digit;
 pub use digit::*;
 
+pub mod math;
+pub use math::*;
+
 /// if true:
 ///     return "Yes"
 /// if false:

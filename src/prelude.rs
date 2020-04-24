@@ -1,18 +1,18 @@
 // re-export frequently used std items
 pub use std::cmp::{max, min, Reverse};
-pub use std::collections::{BTreeMap, BTreeSet, BinaryHeap, VecDeque};
+pub use std::collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque};
 
 pub use itertools::*;
-pub use memoise::memoise;
+pub use memoise::{memoise, memoise_map};
 
 // input! macro
-pub use proconio::marker::{Bytes, Chars, Isize1, Usize1};
+pub use proconio::marker::*;
 pub use proconio::*;
 
 // num stuffs
 pub use num::complex::Complex;
-pub use num::integer::{gcd, lcm};
-pub use num::{abs, clamp, BigInt, BigRational, BigUint, Num, Rational};
+pub use num::integer::*;
+pub use num::*;
 
 // re-exports
 pub use crate::dijkstra::Dijkstra;

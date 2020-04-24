@@ -13,8 +13,7 @@ macro_rules! impl_digit_utils(($($ty:ty),*) => {
             }
 
             fn leftmost_digit(self) -> Self {
-                let digit = self.digit() - 1;
-                (self / (10 as Self).pow(digit))
+                (self / (10 as Self).pow(self.digit() - 1))
             }
 
             fn rightmost_digit(self) -> Self {
