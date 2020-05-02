@@ -1,21 +1,27 @@
-[tasks.default]
+[tasks.PUBLISH]
 description = "Build hoge"
 script = [
     '''
-    echo foooo
+#!/usr/bin/env fish
+echo Publish this package to crate.io
+cargo publish
 ''']
-dependencies = ["bump", "git"]
+dependencies = ["bump"]
 
 
 [tasks.bump]
 description = ""
 script = ['''
-#!/usr/bin/env bash
-echo Update package version...
+#!/usr/bin/env fish
+echo Updating package version...
 
-cargo bump ${@}
+cargo bump $argv
+
+echo package version became (cargo metadata --format-version=1 --no-deps | jq .packages[0].version | sed s/\"//g)
 '''
 ]
+dependencies = ["git"]
+
 
 [tasks.git]
 description = "Build hoge"
