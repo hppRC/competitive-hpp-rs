@@ -1,6 +1,9 @@
-[tasks.BUILD]
+[tasks.foooooo]
 description = "Build hoge"
 script = ['''
 #!/usr/bin/env bash
-echo "build ${@}..."
+echo "build foooooofoooooofoooooo..."
 ''']
+
+[tasks.publish-flow]
+dependencies = ["foooooo"]
