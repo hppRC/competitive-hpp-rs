@@ -3,9 +3,9 @@ description = "Publish package"
 script = [
     '''
 #!/usr/bin/env fish
-echo ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+printf "\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m"
 echo Publish this package to crate.io
-echo ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+printf "\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m"
 cargo publish
 ''']
 dependencies = ["bump", "git"]
@@ -18,9 +18,9 @@ script = ['''
 echo Updating package version...
 
 cargo bump $argv
-echo ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+printf "\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m"
 echo New package version: (cargo metadata --format-version=1 --no-deps | jq .packages[0].version | sed s/\"//g)
-echo ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+printf "\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m"
 '''
 ]
 
@@ -28,13 +28,13 @@ echo ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
 description = "Commit and make tag"
 script = ['''
 #!/usr/bin/env fish
-echo ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+printf "\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m"
 git add Cargo.toml
 git commit -m ":tada: Update package version"
 git tag v(cargo metadata --format-version=1 --no-deps | jq .packages[0].version | sed s/\"//g)
 git push origin v(cargo metadata --format-version=1 --no-deps | jq .packages[0].version | sed s/\"//g)
 git push origin master
-echo ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+printf "\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m"
 '''
 ]
 dependencies = ["bump"]
