@@ -1,36 +1,40 @@
 [tasks.PUBLISH]
-description = "Build hoge"
+description = "Publish package"
 script = [
     '''
 #!/usr/bin/env fish
+echo ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
 echo Publish this package to crate.io
+echo ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
 cargo publish
 ''']
 dependencies = ["bump", "git"]
 
 
 [tasks.bump]
-description = ""
+description = "Bump package version"
 script = ['''
 #!/usr/bin/env fish
 echo Updating package version...
 
 cargo bump $argv
-
-echo package version became (cargo metadata --format-version=1 --no-deps | jq .packages[0].version | sed s/\"//g)
+echo ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+echo New package version: (cargo metadata --format-version=1 --no-deps | jq .packages[0].version | sed s/\"//g)
+echo ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
 '''
 ]
 
 [tasks.git]
-description = "Build hoge"
+description = "Commit and make tag"
 script = ['''
 #!/usr/bin/env fish
-
+echo ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
 git add Cargo.toml
 git commit -m ":tada: Update package version"
 git tag v(cargo metadata --format-version=1 --no-deps | jq .packages[0].version | sed s/\"//g)
 git push origin v(cargo metadata --format-version=1 --no-deps | jq .packages[0].version | sed s/\"//g)
 git push origin master
+echo ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
 '''
 ]
 dependencies = ["bump"]
