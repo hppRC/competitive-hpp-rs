@@ -1,0 +1,6 @@
+[tasks.BUILD]
+description = "Build hoge"
+script = ['''
+#!/usr/bin/env bash
+echo "build ${@}..."
+''']
