@@ -1,9 +1,31 @@
-[tasks.foooooo]
+[tasks.default]
 description = "Build hoge"
+script = [
+    '''
+    echo foooo
+''']
+dependencies = ["bump", "git"]
+
+
+[tasks.bump]
+description = ""
 script = ['''
 #!/usr/bin/env bash
-echo "build foooooofoooooofoooooo..."
-''']
+echo Update package version...
 
-[tasks.publish-flow]
-dependencies = ["foooooo"]
+cargo bump ${@}
+'''
+]
+
+[tasks.git]
+description = "Build hoge"
+script = ['''
+#!/usr/bin/env fish
+
+git add Cargo.toml
+git commit -m ":tada: Update package version"
+git tag v(cargo metadata --format-version=1 --no-deps | jq .packages[0].version | sed s/\"//g)
+git push origin v(cargo metadata --format-version=1 --no-deps | jq .packages[0].version | sed s/\"//g)
+git push origin master
+'''
+]
