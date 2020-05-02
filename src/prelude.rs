@@ -17,7 +17,7 @@ pub use num::*;
 
 // re-exports
 pub use crate::dijkstra::Dijkstra;
-pub use crate::mod_fact::ModFact;
+pub use crate::modulo::*;
 pub use crate::total_ord::*;
 pub use crate::union_find::UnionFind;
 pub use crate::utils::*;

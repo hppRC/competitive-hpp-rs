@@ -1,5 +1,5 @@
 pub mod dijkstra;
-pub mod mod_fact;
+pub mod modulo;
 pub mod total_ord;
 pub mod union_find;
 pub mod utils;
