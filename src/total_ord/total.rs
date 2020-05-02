@@ -5,10 +5,10 @@ pub struct Total<T>(pub T);
 
 impl<T> Total<T>
 where
-    T: Copy,
+    T: Clone,
 {
     pub fn unwrap(&self) -> T {
-        self.0
+        self.0.clone()
     }
 }
 impl<T: PartialEq> Eq for Total<T> {}

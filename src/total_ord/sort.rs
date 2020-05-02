@@ -1,4 +1,5 @@
 use crate::total_ord::Total;
+use num::traits::Float;
 
 pub trait TotalSort {
     fn total_sort(&mut self) -> ();
@@ -6,7 +7,7 @@ pub trait TotalSort {
 
 impl<T> TotalSort for Vec<T>
 where
-    T: PartialOrd + Copy,
+    T: PartialOrd + Float,
 {
     fn total_sort(&mut self) -> () {
         let mut tmp: Vec<Total<T>> = self.iter().map(|&i| Total(i)).collect();
