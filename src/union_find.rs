@@ -21,6 +21,9 @@ pub struct UnionFind {
 }
 
 impl UnionFind {
+    /// ```
+    /// let mut uf = UnionFind::new(5);
+    /// ```
     pub fn new(n: usize) -> Self {
         UnionFind {
             par: (0..n).collect(),
