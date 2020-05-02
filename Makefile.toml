@@ -6,7 +6,7 @@ script = [
 echo Publish this package to crate.io
 cargo publish
 ''']
-dependencies = ["bump"]
+dependencies = ["bump", "git"]
 
 
 [tasks.bump]
@@ -20,8 +20,6 @@ cargo bump $argv
 echo package version became (cargo metadata --format-version=1 --no-deps | jq .packages[0].version | sed s/\"//g)
 '''
 ]
-dependencies = ["git"]
-
 
 [tasks.git]
 description = "Build hoge"
@@ -35,3 +33,4 @@ git push origin v(cargo metadata --format-version=1 --no-deps | jq .packages[0].
 git push origin master
 '''
 ]
+dependencies = ["bump"]
