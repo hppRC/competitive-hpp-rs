@@ -1,18 +1,9 @@
 pub mod digit;
-pub use digit::*;
-
 pub mod math;
-pub use math::*;
+pub mod modulo;
+pub mod yes_no;
 
-/// if true:
-///     return "Yes"
-/// if false:
-///     return "No"
-#[allow(non_snake_case)]
-pub fn YesNo(judge: bool) -> &'static str {
-    if judge {
-        "Yes"
-    } else {
-        "No"
-    }
-}
+pub use digit::*;
+pub use math::*;
+pub use modulo::*;
+pub use yes_no::*;
