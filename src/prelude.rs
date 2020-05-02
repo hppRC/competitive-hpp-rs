@@ -1,9 +1,9 @@
 // re-export frequently used std items
-pub use std::cmp::{max, min, Reverse};
-pub use std::collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque};
+pub use std::cmp::*;
+pub use std::collections::*;
 
 pub use itertools::*;
-pub use memoise::{memoise, memoise_map};
+pub use memoise::*;
 
 // input! macro
 pub use proconio::marker::*;
@@ -18,6 +18,7 @@ pub use num::*;
 // re-exports
 pub use crate::dijkstra::Dijkstra;
 pub use crate::mod_fact::ModFact;
+pub use crate::total_ord::*;
 pub use crate::union_find::UnionFind;
 pub use crate::utils::*;
 
