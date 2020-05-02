@@ -25,34 +25,33 @@ impl_digit_utils!(u64, u32, i64, i32, usize, isize);
 mod tests {
     use super::*;
 
+    macro_rules! impl_math_tests (($ty:ty) => {
+        assert_eq!((16 as $ty).log2_trunc(), 4);
+        assert_eq!((10 as $ty).log2_trunc(), 3);
+    });
+
     #[test]
     fn u64_math_test() -> () {
-        assert_eq!(16u64.log2_trunc(), 4);
-        assert_eq!(10u64.log2_trunc(), 3);
+        impl_math_tests!(u64);
     }
     #[test]
     fn u32_math_test() -> () {
-        assert_eq!(16u32.log2_trunc(), 4);
-        assert_eq!(10u32.log2_trunc(), 3);
+        impl_math_tests!(u32);
     }
     #[test]
     fn i64_math_test() -> () {
-        assert_eq!(16i64.log2_trunc(), 4);
-        assert_eq!(10i64.log2_trunc(), 3);
+        impl_math_tests!(i64);
     }
     #[test]
     fn i32_math_test() -> () {
-        assert_eq!(16i32.log2_trunc(), 4);
-        assert_eq!(10i32.log2_trunc(), 3);
+        impl_math_tests!(i32);
     }
     #[test]
     fn usize_math_test() -> () {
-        assert_eq!(16usize.log2_trunc(), 4);
-        assert_eq!(10usize.log2_trunc(), 3);
+        impl_math_tests!(usize);
     }
     #[test]
     fn isize_math_test() -> () {
-        assert_eq!(16isize.log2_trunc(), 4);
-        assert_eq!(10isize.log2_trunc(), 3);
+        impl_math_tests!(isize);
     }
 }
