@@ -43,7 +43,7 @@ mod tests {
         impl_math_tests!(i64);
     }
     #[test]
-    fn i32_math_test()  {
+    fn i32_math_test() -> () {
         impl_math_tests!(i32);
     }
     #[test]
