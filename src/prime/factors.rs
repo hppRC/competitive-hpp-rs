@@ -109,7 +109,7 @@ macro_rules! impl_prime_factors(($($ty:ty),*) => {
     )*
 });
 
-impl_prime_factors!(u64, u32, u128, usize);
+impl_prime_factors!(u64, u32, u128, usize, i64, i32, i128, isize);
 
 #[cfg(test)]
 mod test {
