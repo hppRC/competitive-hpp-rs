@@ -69,10 +69,12 @@ where
         let uy = y.to_usize().unwrap();
 
         if self.rank[ux] < self.rank[uy] {
-            self.group[uy] = self.group[uy] + self.group[ux];
+            let tmp = self.group[ux];
+            self.group[uy] += tmp;
             self.par[ux] = y;
         } else {
-            self.group[ux] = self.group[ux] + self.group[uy];
+            let tmp = self.group[uy];
+            self.group[ux] += tmp;
             self.par[uy] = x;
         }
         if self.rank[ux] == self.rank[uy] {
