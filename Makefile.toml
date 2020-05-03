@@ -23,6 +23,7 @@ echo New package version: (cargo metadata --format-version=1 --no-deps | jq .pac
 printf "\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m\n\n"
 '''
 ]
+dependencies = ["lint"]
 
 [tasks.git]
 description = "Commit and make tag"
