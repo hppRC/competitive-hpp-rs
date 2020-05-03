@@ -8,7 +8,7 @@ echo Publishing package to crate.io
 printf "\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m\n\n"
 cargo publish
 ''']
-dependencies = ["bump", "git"]
+dependencies = ["bump", "clippy", "git"]
 
 
 [tasks.bump]
@@ -34,7 +34,19 @@ git commit -m ":tada: Update package version"
 git tag v(cargo metadata --format-version=1 --no-deps | jq .packages[0].version | sed s/\"//g)
 git push origin v(cargo metadata --format-version=1 --no-deps | jq .packages[0].version | sed s/\"//g)
 git push origin master
-printf "\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m\n\n"
+printf "\n\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m\n"
 '''
 ]
 dependencies = ["bump"]
+
+[tasks.clippy]
+description = "Linting code styles..."
+script = [
+    '''
+printf "\n\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m\n"
+echo linting codes now...
+echo
+rustup run nightly cargo clippy --fix -Z unstable-options
+printf "\n\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m\n"
+    '''
+]
