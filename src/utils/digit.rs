@@ -32,7 +32,7 @@ macro_rules! impl_digit_utils(($($ty:ty),*) => {
     )*
 });
 
-impl_digit_utils!(u64, u32, i64, i32, usize, isize);
+impl_digit_utils!(u64, u32, i64, i32, usize, isize, u128, i128);
 
 #[cfg(test)]
 mod tests {

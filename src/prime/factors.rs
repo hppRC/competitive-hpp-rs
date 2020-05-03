@@ -1,9 +1,7 @@
-use num::traits::{NumAssign, PrimInt, Unsigned};
+use num::traits::PrimInt;
 use std::collections::HashMap;
-use std::hash::Hash;
 
-
-pub trait Factor: PrimInt + Unsigned + Hash {
+pub trait Factor: PrimInt {
     //! ## Example:
     //! ```
     //! use competitive_hpp::prelude::*;
@@ -25,98 +23,98 @@ pub trait Factor: PrimInt + Unsigned + Hash {
     fn first_factor(&self) -> Self;
 }
 
-impl<T> Factor for T
-where
-    T: PrimInt + Unsigned + Hash + NumAssign,
-{
-    /// Find all prime factors of a number
-    /// Does not use a `PrimeSet`, but simply counts upwards
-    fn factors(&self) -> Vec<Self> {
-        if self <= &Self::one() {
-            return Vec::new();
-        };
-        let mut lst: Vec<Self> = Vec::new();
-        let mut curn = *self;
-        loop {
-            let m = curn.first_factor();
-            lst.push(m);
-            if m == curn {
-                break;
-            }
-            curn /= m
-        }
-        lst
-    }
-
-    /// Find all unique prime factors of a number
-    fn factors_uniq(&self) -> Vec<Self> {
-        if self <= &Self::one() {
-            return Vec::new();
-        };
-        let mut lst: Vec<Self> = Vec::new();
-        let mut curn = *self;
-
-        loop {
-            let m = curn.first_factor();
-            lst.push(m);
-            if curn == m {
-                break;
-            }
-            while curn % m == Self::zero() {
-                curn /= m;
-            }
-            if curn == Self::one() {
-                break;
-            }
-        }
-        lst
-    }
-
-    fn factors_map(&self) -> HashMap<Self, Self> {
-        let zero = Self::zero();
-        let one = Self::one();
-
-        let mut facs: HashMap<Self, Self> = HashMap::new();
-        let mut n = *self;
-        let mut a = Self::from(2).unwrap();
-
-        while n >= a * a {
-            if n % a == zero {
-                n /= a;
-                *facs.entry(a).or_insert(zero) += one;
-            } else {
-                a += one;
-            }
-        }
-        *facs.entry(n).or_insert(zero) += one;
-        facs
-    }
-
-    /// Test whether a number is prime. Checks every odd number up to `sqrt(n)`.
-    fn is_prime(&self) -> bool {
-        if self <= &Self::one() {
-            return false;
-        }
-        self.first_factor() == *self
-    }
-
-    fn first_factor(&self) -> Self {
-        if *self % Self::from(2).unwrap() == Self::zero() {
-            return Self::from(2).unwrap();
-        };
-        // for n in (3..).step_by(2).take_while(|m| m*m <= x) {
-        for n in (1..)
-            .map(|m| 2 * m + 1)
-            .take_while(|m| Self::from(m * m).unwrap() <= *self)
+macro_rules! impl_prime_factors(($($ty:ty),*) => {
+    $(
+        impl Factor for $ty
         {
-            if *self % Self::from(n).unwrap() == Self::zero() {
-                return Self::from(n).unwrap();
-            };
+            /// Find all prime factors of a number
+            /// Does not use a `PrimeSet`, but simply counts upwards
+            fn factors(&self) -> Vec<Self> {
+                if self <= &1 {
+                    return Vec::new();
+                };
+                let mut lst: Vec<Self> = Vec::new();
+                let mut curn = *self;
+                loop {
+                    let m = curn.first_factor();
+                    lst.push(m);
+                    if m == curn {
+                        break;
+                    }
+                    curn /= m
+                }
+                lst
+            }
+            /// Find all unique prime factors of a number
+            fn factors_uniq(&self) -> Vec<Self> {
+                if self <= &1 {
+                    return Vec::new();
+                };
+                let mut lst: Vec<Self> = Vec::new();
+                let mut curn = *self;
+
+                loop {
+                    let m = curn.first_factor();
+                    lst.push(m);
+                    if curn == m {
+                        break;
+                    }
+                    while curn % m == 0 {
+                        curn /= m;
+                    }
+                    if curn == 1 {
+                        break;
+                    }
+                }
+                lst
+            }
+
+            fn factors_map(&self) -> HashMap<Self, Self> {
+                let mut facs: HashMap<Self, Self> = HashMap::new();
+                let mut n = *self;
+                let mut a = 2;
+
+                while n >= a * a {
+                    if n % a == 0 {
+                        n /= a;
+                        *facs.entry(a).or_insert(0) += 1;
+                    } else {
+                        a += 1;
+                    }
+                }
+                *facs.entry(n).or_insert(0) += 1;
+                facs
+            }
+            /// Test whether a number is prime. Checks every odd number up to `sqrt(n)`.
+            fn is_prime(&self) -> bool {
+                if self <= &1 {
+                    return false;
+                }
+                self.first_factor() == *self
+            }
+
+            fn first_factor(&self) -> Self {
+                if *self % 2 == 0 {
+                    return 2;
+                };
+                // for n in (3..).step_by(2).take_while(|m| m*m <= x) {
+                for n in (1..)
+                    .map(|m| 2 * m + 1)
+                    .take_while(|m| m * m <= *self)
+                {
+                    if *self % n == 0 {
+                        return n;
+                    };
+                }
+                // No factor found. It must be prime.
+                *self
+            }
         }
-        // No factor found. It must be prime.
-        *self
-    }
-}
+    )*
+});
+
+impl_prime_factors!(u64, u32, u128, usize);
+
 
 #[cfg(test)]
 mod test {
