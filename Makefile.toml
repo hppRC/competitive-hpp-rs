@@ -8,7 +8,7 @@ echo Publishing package to crate.io
 printf "\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m\n\n"
 cargo publish
 ''']
-dependencies = ["bump", "clippy", "git"]
+dependencies = ["bump", "lint", "git"]
 
 
 [tasks.bump]
@@ -39,7 +39,7 @@ printf "\n\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m\n"
 ]
 dependencies = ["bump"]
 
-[tasks.clippy]
+[tasks.lint]
 description = "Linting code styles..."
 script = [
     '''
