@@ -24,7 +24,7 @@ mod test {
     use super::*;
 
     #[test]
-    fn test_total_ord()  {
+    fn test_total_ord() {
         let test = vec![2.2f64, 1.0f64, 8.5f64, 0.5f64, -3.5f64];
         let sorted: Vec<f64> = vec![-3.5f64, 0.5f64, 1.0f64, 2.2f64, 8.5f64];
 

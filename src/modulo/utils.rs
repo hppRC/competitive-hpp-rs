@@ -35,18 +35,18 @@ mod test {
     });
 
     #[test]
-    fn test_isize_mod()  {
+    fn test_isize_mod() {
         const MOD: isize = 7;
         impl_modulo_test!(isize);
     }
 
     #[test]
-    fn test_i64_mod()  {
+    fn test_i64_mod() {
         const MOD: i64 = 7;
         impl_modulo_test!(i64);
     }
     #[test]
-    fn test_i32_mod()  {
+    fn test_i32_mod() {
         const MOD: i32 = 7;
         impl_modulo_test!(i32);
     }

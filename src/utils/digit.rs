@@ -55,28 +55,28 @@ mod tests {
     });
 
     #[test]
-    fn u64_digit_test()  {
+    fn u64_digit_test() {
         impl_digit_utils_test!(u64);
     }
 
     #[test]
-    fn u32_digit_test()  {
+    fn u32_digit_test() {
         impl_digit_utils_test!(u32);
     }
     #[test]
-    fn i64_digit_test()  {
+    fn i64_digit_test() {
         impl_digit_utils_test!(i64);
     }
     #[test]
-    fn i32_digit_test()  {
+    fn i32_digit_test() {
         impl_digit_utils_test!(i32);
     }
     #[test]
-    fn usize_digit_test()  {
+    fn usize_digit_test() {
         impl_digit_utils_test!(usize);
     }
     #[test]
-    fn isize_digit_test()  {
+    fn isize_digit_test() {
         impl_digit_utils_test!(isize);
     }
 }
