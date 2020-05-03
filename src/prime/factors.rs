@@ -1,21 +1,20 @@
 use num::traits::PrimInt;
 use std::collections::HashMap;
 
+/// ## Example:
+/// ```
+/// use competitive_hpp::prelude::*;
+///
+/// assert_eq!(2, 10u64.first_factor());
+/// assert_eq!(vec![2, 5, 5], 50u64.factors());
+/// assert_eq!(vec![2, 5], 50u64.factors_uniq());
+/// assert!(7u64.is_prime());
+///
+/// let mut map: HashMap<u64, u64> = HashMap::new();
+/// map.insert(2, 1);
+/// map.insert(5, 2);
+/// assert_eq!(map, 50u64.factors_map());
 pub trait Factor: PrimInt {
-    //! ## Example:
-    //! ```
-    //! use competitive_hpp::prelude::*;
-    //!
-    //! assert_eq!(2, 10u64.first_factor());
-    //! assert_eq!(vec![2, 5, 5], 50u64.factors());
-    //! assert_eq!(vec![2, 5], 50u64.factors_uniq());
-    //! assert!(7u64.is_prime());
-    //!
-    //! let mut map: HashMap<u64, u64> = HashMap::new();
-    //! map.insert(2, 1);
-    //! map.insert(5, 2);
-    //! assert_eq!(map, 50u64.factors_map());
-    //! ```
     fn factors(&self) -> Vec<Self>;
     fn factors_uniq(&self) -> Vec<Self>;
     fn factors_map(&self) -> HashMap<Self, Self>;
@@ -25,8 +24,7 @@ pub trait Factor: PrimInt {
 
 macro_rules! impl_prime_factors(($($ty:ty),*) => {
     $(
-        impl Factor for $ty
-        {
+        impl Factor for $ty {
             /// Find all prime factors of a number
             /// Does not use a `PrimeSet`, but simply counts upwards
             fn factors(&self) -> Vec<Self> {
@@ -90,7 +88,7 @@ macro_rules! impl_prime_factors(($($ty:ty),*) => {
                 if self <= &1 {
                     return false;
                 }
-                self.first_factor() == *self
+                (*self).first_factor() == *self
             }
 
             fn first_factor(&self) -> Self {
@@ -98,10 +96,7 @@ macro_rules! impl_prime_factors(($($ty:ty),*) => {
                     return 2;
                 };
                 // for n in (3..).step_by(2).take_while(|m| m*m <= x) {
-                for n in (1..)
-                    .map(|m| 2 * m + 1)
-                    .take_while(|m| m * m <= *self)
-                {
+                for n in (1..).map(|m| 2 * m + 1).take_while(|m| m * m <= *self) {
                     if *self % n == 0 {
                         return n;
                     };
@@ -110,11 +105,11 @@ macro_rules! impl_prime_factors(($($ty:ty),*) => {
                 *self
             }
         }
+
     )*
 });
 
 impl_prime_factors!(u64, u32, u128, usize);
-
 
 #[cfg(test)]
 mod test {
@@ -135,19 +130,19 @@ mod test {
     }
 
     #[test]
-    fn u64_factors_test()  {
+    fn u64_factors_test() {
         impl_factors_tests!(u64);
     }
     #[test]
-    fn u32_factors_test()  {
+    fn u32_factors_test() {
         impl_factors_tests!(u32);
     }
     #[test]
-    fn usize_factors_test()  {
+    fn usize_factors_test() {
         impl_factors_tests!(usize);
     }
     #[test]
-    fn u8_factors_test()  {
+    fn u8_factors_test() {
         impl_factors_tests!(u128);
     }
 }
