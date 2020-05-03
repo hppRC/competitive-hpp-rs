@@ -8,7 +8,7 @@ echo Publishing package to crate.io
 printf "\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m\n\n"
 cargo publish
 ''']
-dependencies = ["bump", "lint", "git"]
+dependencies = ["lint", "bump", "git"]
 
 
 [tasks.bump]
