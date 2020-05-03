@@ -72,19 +72,19 @@ mod test {
     use super::*;
 
     #[test]
-    fn test_u16_factinv() -> () {
+    fn test_u16_factinv()  {
         let _table = ModFact::new(10u16, 91u16);
     }
     #[test]
-    fn test_u32_factinv() -> () {
+    fn test_u32_factinv()  {
         let _table = ModFact::new(10u32, 91u32);
     }
     #[test]
-    fn test_u64_factinv() -> () {
+    fn test_u64_factinv()  {
         let _table = ModFact::new(10u64, 91u64);
     }
     #[test]
-    fn test_usize_factinv() -> () {
+    fn test_usize_factinv()  {
         let _table = ModFact::new(10usize, 91usize);
     }
 }

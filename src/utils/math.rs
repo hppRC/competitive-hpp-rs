@@ -31,27 +31,27 @@ mod tests {
     });
 
     #[test]
-    fn u64_math_test() -> () {
+    fn u64_math_test()  {
         impl_math_tests!(u64);
     }
     #[test]
-    fn u32_math_test() -> () {
+    fn u32_math_test()  {
         impl_math_tests!(u32);
     }
     #[test]
-    fn i64_math_test() -> () {
+    fn i64_math_test()  {
         impl_math_tests!(i64);
     }
     #[test]
-    fn i32_math_test() -> () {
+    fn i32_math_test()  {
         impl_math_tests!(i32);
     }
     #[test]
-    fn usize_math_test() -> () {
+    fn usize_math_test()  {
         impl_math_tests!(usize);
     }
     #[test]
-    fn isize_math_test() -> () {
+    fn isize_math_test()  {
         impl_math_tests!(isize);
     }
 }

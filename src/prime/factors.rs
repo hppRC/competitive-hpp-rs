@@ -135,19 +135,19 @@ mod test {
     }
 
     #[test]
-    fn u64_factors_test() -> () {
+    fn u64_factors_test()  {
         impl_factors_tests!(u64);
     }
     #[test]
-    fn u32_factors_test() -> () {
+    fn u32_factors_test()  {
         impl_factors_tests!(u32);
     }
     #[test]
-    fn usize_factors_test() -> () {
+    fn usize_factors_test()  {
         impl_factors_tests!(usize);
     }
     #[test]
-    fn u8_factors_test() -> () {
+    fn u8_factors_test()  {
         impl_factors_tests!(u128);
     }
 }
