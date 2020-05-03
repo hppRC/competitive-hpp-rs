@@ -18,6 +18,7 @@ pub struct UnionFind {
     par: Vec<usize>,
     rank: Vec<usize>,
     group: Vec<usize>,
+    num_of_groups: usize,
 }
 
 impl UnionFind {
@@ -26,6 +27,7 @@ impl UnionFind {
             par: (0..n).collect(),
             rank: vec![0; n],
             group: vec![1; n],
+            num_of_groups: n,
         }
     }
 
@@ -57,6 +59,7 @@ impl UnionFind {
         if self.rank[x] == self.rank[y] {
             self.rank[y] += 1;
         }
+        self.num_of_groups -= 1;
     }
 
     pub fn is_same(&mut self, x: usize, y: usize) -> bool {
@@ -79,10 +82,16 @@ mod tests {
         // 0 ━━━━━ 1 ━━━━━ 4
         //
         // 2 ━━━━━ 3
+        assert_eq!(5, uf.num_of_groups);
 
         uf.union(0, 1);
+        assert_eq!(4, uf.num_of_groups);
+
         uf.union(2, 3);
+        assert_eq!(3, uf.num_of_groups);
+
         uf.union(1, 4);
+        assert_eq!(2, uf.num_of_groups);
 
         assert_eq!(uf.find(0), uf.find(1));
         assert_ne!(uf.find(0), uf.find(2));
@@ -112,6 +121,7 @@ mod tests {
         assert_eq!(uf.group_size(3), 2);
         assert_eq!(uf.group_size(4), 3);
 
-        // dbg!(uf);
+        uf.union(0, 2);
+        assert_eq!(1, uf.num_of_groups);
     }
 }
