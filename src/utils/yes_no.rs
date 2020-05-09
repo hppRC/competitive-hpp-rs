@@ -23,3 +23,11 @@ pub fn YESNO(judge: bool) -> &'static str {
         "NO"
     }
 }
+
+pub fn tf<'a>(value: bool, t: &'a str, f: &'a str) -> &'a str {
+    if value {
+        t
+    } else {
+        f
+    }
+}

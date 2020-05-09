@@ -18,6 +18,7 @@ pub use num::*;
 // re-exports
 pub use crate::constants::*;
 pub use crate::dijkstra::Dijkstra;
+pub use crate::echo::*;
 pub use crate::modulo::*;
 pub use crate::prime::*;
 pub use crate::total_ord::*;

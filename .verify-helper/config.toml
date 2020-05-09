@@ -1,5 +1,0 @@
-[languages.rust]
-compile = "bash -c 'cargo build --release'"
-execute = "cargo run"
-bundle = "false"
-list_dependencies = "sed 's/^@include \"\\(.*\\)\"$/\\1/ ; t ; d' {path}"
