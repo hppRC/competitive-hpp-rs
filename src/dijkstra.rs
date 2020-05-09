@@ -71,7 +71,7 @@ where
         let mut adjacency_list: Vec<Vec<(usize, F)>> = vec![vec![]; n.to_usize().unwrap()];
 
         for &(from, to, cost) in edges {
-            adjacency_list[from].push((to, F::from(cost)))
+            adjacency_list[from].push((to, cost))
         }
 
         adjacency_list
