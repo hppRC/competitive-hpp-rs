@@ -120,7 +120,7 @@ mod tests {
         let float_dijkstra = Dijkstra::new(3, &float_edges, 0);
 
         assert_eq!(float_dijkstra.dist[0], 0f64);
-        assert_eq!(float_dijkstra.dist[1], 1.5);
-        assert_eq!(float_dijkstra.dist[2], 4.3);
+        assert_eq!(float_dijkstra.dist[1], 1.5f64);
+        assert_eq!(float_dijkstra.dist[2], 4.3f64);
     }
 }

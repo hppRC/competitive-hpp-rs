@@ -24,6 +24,7 @@ pub struct Eratosthenes {
 /// map.insert(5, 2);
 /// assert_eq!(map, eratosthenes.factorization(50));
 /// ```
+#[allow(clippy::many_single_char_names)]
 impl Eratosthenes {
     pub fn new<T>(n: T) -> Self
     where

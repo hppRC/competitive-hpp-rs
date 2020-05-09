@@ -22,11 +22,11 @@ pub trait Echo {
 
 impl<T: Echo> Echo for Vec<T> {
     fn echo(&self, w: &mut impl Write) -> Result<(), std::io::Error> {
-        for i in 0..self.len() {
+        for (i, value) in self.iter().enumerate() {
             if i > 0 {
                 write!(w, " ")?;
             }
-            self[i].echo(w)?;
+            value.echo(w)?;
         }
         Ok(())
     }
