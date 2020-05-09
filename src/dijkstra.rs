@@ -12,7 +12,6 @@ use std::collections::BinaryHeap;
 /// //Dijkstra::new(vertex num, edges, start vertex)
 /// let dijkstra = Dijkstra::new(4, &edges, 0);
 /// ```
-
 #[derive(Clone, Debug)]
 pub struct Dijkstra {
     dist: Vec<i64>,
