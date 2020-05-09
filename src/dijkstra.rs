@@ -1,3 +1,5 @@
+use crate::total_ord::Total;
+use num::traits::{Bounded, Num, PrimInt};
 use std::cmp::Reverse;
 use std::collections::BinaryHeap;
 
@@ -5,44 +7,55 @@ use std::collections::BinaryHeap;
 ///
 /// Example:
 /// ```
-/// use competitive_hpp::dijkstra::Dijkstra;
+/// use competitive_hpp::prelude::*;
 /// // edge: Vec<(from, to, cost)>
-/// let edges: Vec<(usize, usize, i64)> = vec![(0, 1, 1),(0, 2, 6),(1, 3, 2)];
+/// let edges = vec![(0, 1, 1),(0, 2, 6),(1, 3, 2)];
 ///
 /// //Dijkstra::new(vertex num, edges, start vertex)
 /// let dijkstra = Dijkstra::new(4, &edges, 0);
+/// assert_eq!(dijkstra.dist[0], 0);
+/// assert_eq!(dijkstra.dist[1], 1);
+/// assert_eq!(dijkstra.dist[2], 6);
 /// ```
 #[derive(Clone, Debug)]
-pub struct Dijkstra {
-    dist: Vec<i64>,
-    adjacency_list: Vec<Vec<(usize, i64)>>,
-    n: usize,
+pub struct Dijkstra<T, F>
+where
+    T: PrimInt,
+    F: Num + Bounded + Clone + Copy + PartialOrd,
+{
+    pub dist: Vec<F>,
+    pub adjacency_list: Vec<Vec<(usize, F)>>,
+    n: T,
 }
 
-impl Dijkstra {
-    pub fn new(n: usize, edges: &[(usize, usize, i64)], start: usize) -> Self {
-        let inf = i64::max_value();
+impl<T, F> Dijkstra<T, F>
+where
+    T: PrimInt,
+    F: Num + Bounded + Clone + Copy + PartialOrd,
+{
+    pub fn new(n: T, edges: &[(usize, usize, F)], start: usize) -> Self {
+        let inf = F::max_value();
 
-        let mut dist: Vec<i64> = vec![inf; n];
+        let mut dist: Vec<F> = vec![inf; n.to_usize().unwrap()];
         let adjacency_list = Self::create_adjacency_list(n, &edges);
 
         // MinHeap
-        let mut heap: BinaryHeap<Reverse<(i64, usize)>> = BinaryHeap::new();
+        let mut heap: BinaryHeap<Total<Reverse<(F, usize)>>> = BinaryHeap::new();
 
-        dist[start] = 0;
-        heap.push(Reverse((0, start)));
+        dist[start] = F::zero();
+        heap.push(Total(Reverse((F::zero(), start))));
 
         while !heap.is_empty() {
-            let Reverse((d, v)) = heap.pop().unwrap();
+            let Total(Reverse((d, v))) = heap.pop().unwrap();
 
             if dist[v] < d {
                 continue;
             }
 
-            for &(u, cost) in &adjacency_list[v] {
+            for &(u, cost) in adjacency_list[v].iter() {
                 if dist[u] > dist[v] + cost {
                     dist[u] = dist[v] + cost;
-                    heap.push(Reverse((dist[u], u)));
+                    heap.push(Total(Reverse((dist[u], u))));
                 }
             }
         }
@@ -54,11 +67,11 @@ impl Dijkstra {
         }
     }
 
-    fn create_adjacency_list(n: usize, edges: &[(usize, usize, i64)]) -> Vec<Vec<(usize, i64)>> {
-        let mut adjacency_list: Vec<Vec<(usize, i64)>> = vec![vec![]; n];
+    fn create_adjacency_list(n: T, edges: &[(usize, usize, F)]) -> Vec<Vec<(usize, F)>> {
+        let mut adjacency_list: Vec<Vec<(usize, F)>> = vec![vec![]; n.to_usize().unwrap()];
 
         for &(from, to, cost) in edges {
-            adjacency_list[from].push((to, cost))
+            adjacency_list[from].push((to, F::from(cost)))
         }
 
         adjacency_list
@@ -96,5 +109,18 @@ mod tests {
         assert_eq!(dijkstra_another.dist[1], 0);
         assert_eq!(dijkstra_another.dist[2], 12);
         assert_eq!(dijkstra_another.dist[3], 2);
+    }
+
+    #[test]
+    fn float_dijkstra_test() {
+        // 0 --1.5--> 1 --6.2--> 2
+        // |---------4.3-------->|
+        let float_edges = vec![(0, 1, 1.5f64), (1, 2, 6.2f64), (0, 2, 4.3f64)];
+
+        let float_dijkstra = Dijkstra::new(3, &float_edges, 0);
+
+        assert_eq!(float_dijkstra.dist[0], 0f64);
+        assert_eq!(float_dijkstra.dist[1], 1.5);
+        assert_eq!(float_dijkstra.dist[2], 4.3);
     }
 }
