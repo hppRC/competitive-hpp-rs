@@ -119,8 +119,8 @@ mod tests {
 
         let float_dijkstra = Dijkstra::new(3, &float_edges, 0);
 
-        assert!(float_dijkstra.dist[0] - 0f64 < f64::EPSILON);
-        assert!(float_dijkstra.dist[1] - 1.5f64 < f64::EPSILON);
-        assert!(float_dijkstra.dist[2] - 4.3f64 < f64::EPSILON);
+        assert!(float_dijkstra.dist[0] - 0f64 < std::f64::EPSILON);
+        assert!(float_dijkstra.dist[1] - 1.5f64 < std::f64::EPSILON);
+        assert!(float_dijkstra.dist[2] - 4.3f64 < std::f64::EPSILON);
     }
 }
