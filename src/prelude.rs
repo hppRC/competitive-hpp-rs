@@ -15,6 +15,8 @@ pub use num::integer::*;
 
 pub use num::*;
 
+pub use crate::echo;
+
 // re-exports
 pub use crate::constants::*;
 pub use crate::dijkstra::Dijkstra;
