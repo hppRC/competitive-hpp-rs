@@ -124,6 +124,7 @@ macro_map!(impl_echo_float, f32, f64);
 #[cfg(test)]
 mod test {
     use super::*;
+    #[allow(clippy::approx_constant)]
     #[test]
     fn test_echo() {
         fn echo_str(v: impl Echo) -> String {
