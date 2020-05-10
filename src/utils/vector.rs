@@ -1,19 +1,26 @@
 trait VecUtils<T> {
-    fn transpose(&self) -> Vec<Vec<T>>;
+    fn power_set(&self) -> Vec<Vec<T>>;
 }
 
-impl<T> VecUtils<T> for Vec<Vec<T>>
+impl<T> VecUtils<T> for Vec<T>
 where
     T: Clone,
 {
-    fn transpose(&self) -> Vec<Vec<T>> {
-        (0..self[0].len())
-            .map(|j| {
-                (0..self.len())
-                    .map(|i| self[i][j].clone())
+    fn power_set(&self) -> Vec<Vec<T>> {
+        let n = self.len();
+        (0..1 << n)
+            .map(|pattern| {
+                (0..n)
+                    .filter_map(|i| {
+                        if (pattern >> i) & 1 == 1 {
+                            Some(self[i].clone())
+                        } else {
+                            None
+                        }
+                    })
                     .collect::<Vec<T>>()
             })
-            .collect::<Vec<Vec<T>>>()
+            .collect()
     }
 }
 
@@ -22,12 +29,26 @@ mod test {
     use super::*;
 
     #[test]
-    fn vector_test() {
-        let test = vec![vec![0, 1, 2, 3]; 2];
+    fn vec_test() {
+        let mut test = vec![0, 1, 2];
 
         assert_eq!(
-            vec![vec![0, 0], vec![1, 1], vec![2, 2], vec![3, 3],],
-            test.transpose()
-        )
+            vec![
+                vec![],
+                vec![0],
+                vec![1],
+                vec![0, 1],
+                vec![2],
+                vec![0, 2],
+                vec![1, 2],
+                vec![0, 1, 2]
+            ],
+            test.power_set()
+        );
+
+        test.push(3);
+        test.push(4);
+
+        assert_eq!(test.power_set().len(), 32);
     }
 }
