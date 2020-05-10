@@ -1,4 +1,4 @@
-trait VecVecUtils<T> {
+pub trait VecVecUtils<T> {
     fn transpose(&self) -> Vec<Vec<T>>;
     // fn power_set(&self) -> Iter<Vec<T>>;
 }

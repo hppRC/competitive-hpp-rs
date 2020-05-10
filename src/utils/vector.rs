@@ -1,4 +1,4 @@
-trait VecUtils<T> {
+pub trait VecUtils<T> {
     fn power_set(&self) -> Vec<Vec<T>>;
 }
 
