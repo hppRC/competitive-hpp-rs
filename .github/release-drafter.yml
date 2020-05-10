@@ -21,8 +21,14 @@ categories:
   - title: ":up: Dependencies"
     label: "dependencies"
 
-  - title: ":art: Styling"
-    label: "styling"
+  - title: ":art: Tests"
+    label: "tests"
+
+  - title: ":shirt: Config"
+    label: "tests"
+
+  - title: ":memo: Document"
+    label: "document"
 
 change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
 template: |

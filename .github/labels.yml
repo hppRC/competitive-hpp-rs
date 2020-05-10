@@ -16,14 +16,8 @@
 - name: source
   color: 88d498
 
-- name: styling
+- name: tests
   color: 3a86ff
-
-- name: assets
-  color: ffba08
-
-- name: gatsby
-  color: 240046
 
 - name: config
   color: f8e16c

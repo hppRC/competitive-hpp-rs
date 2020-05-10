@@ -3,27 +3,18 @@ workflow:
   - .github/workflows/**/*
 
 dependencies:
-  - yarn.lock
-  - package.json
+  - Cargo.toml
 
 source:
-  - src/**/*.tsx
-  - src/**/*.ts
-  - src/**/*.jsx
-  - src/**/*.js
+  - src/**/*.rs
 
-styling:
-  - src/**/*.css
-  - src/**/*.scss
-  - src/**/*.sass
-
-assets:
-  - assets/*
+tests:
+  - tests/**/*.rs
 
 config:
-  - .eslintignore
-  - .eslintrc.json
-  - .prettierrc
-  - .stylelint.json
-  - tsconfig.json
+  - Makefile.toml
   - .gitignore
+
+document:
+  - README.md
+  - LICENSE
