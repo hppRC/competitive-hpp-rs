@@ -3,7 +3,7 @@ name: Sync labels
 on:
   push:
     branches:
-      - gh-pages
+      - master
     paths:
       - ".github/labels.yml"
       - ".github/workflows/label_sync.yml"
