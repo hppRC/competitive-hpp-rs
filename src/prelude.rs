@@ -2,7 +2,10 @@
 pub use std::cmp::*;
 pub use std::collections::*;
 
+pub use maplit::*;
+
 pub use itertools::*;
+pub use itertools_num::*;
 pub use memoise::*;
 
 // input! macro
@@ -12,7 +15,6 @@ pub use proconio::*;
 // num stuffs
 pub use num::complex::Complex;
 pub use num::integer::*;
-
 pub use num::*;
 
 pub use crate::echo;
