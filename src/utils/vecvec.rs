@@ -1,6 +1,5 @@
 pub trait VecVecUtils<T> {
     fn transpose(&self) -> Vec<Vec<T>>;
-    // fn power_set(&self) -> Iter<Vec<T>>;
 }
 
 impl<T> VecVecUtils<T> for Vec<Vec<T>>
