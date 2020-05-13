@@ -1,6 +1,9 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Add
+- :white_check_mark: git-chglog
+
 ### Change
 - :white_check_mark: release drafter message
 
