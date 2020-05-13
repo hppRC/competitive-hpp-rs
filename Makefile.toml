@@ -8,7 +8,7 @@ echo Publishing package to crate.io
 printf "\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m\n\n"
 cargo publish
 ''']
-dependencies = ["lint", "bump", "git"]
+dependencies = ["lint", "bump", "changelog", "git"]
 
 [tasks.lint]
 description = "Linting code styles..."
@@ -22,6 +22,21 @@ printf "\n\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m\n"
     '''
 ]
 
+[tasks.changelog]
+description = "Update CHANGELOG"
+script = ['''
+#!/usr/bin/env fish
+echo Updating CHANGELOG.md...
+
+
+printf "\n\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m\n"
+echo
+git-chglog -o CHANGELOG.md
+echo
+printf "\e[33m✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨\e[m\n\n"
+'''
+]
+dependencies = ["bump"]
 
 [tasks.bump]
 description = "Bump package version"
