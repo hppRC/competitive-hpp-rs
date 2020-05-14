@@ -1,3 +1,6 @@
+#[macro_use]
+extern crate num_derive;
+
 pub mod constants;
 pub mod dijkstra;
 pub mod echo;
