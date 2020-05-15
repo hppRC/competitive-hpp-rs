@@ -2,10 +2,21 @@
 ## [Unreleased]
 
 ### Add
+- :sparkles: usefull ModInt
+- :sparkles: operation's implementations
+- :sparkles: ModInt struct
+
+
+<a name="v0.10.13"></a>
+## [v0.10.13] - 2020-05-13
+### Add
 - :white_check_mark: git-chglog
 
 ### Change
 - :white_check_mark: release drafter message
+
+### Update
+- :tada: package version
 
 
 <a name="v0.10.12"></a>
@@ -459,7 +470,8 @@
 - :tada: commit
 
 
-[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.12...HEAD
+[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.13...HEAD
+[v0.10.13]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.12...v0.10.13
 [v0.10.12]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.11...v0.10.12
 [v0.10.11]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.10...v0.10.11
 [v0.10.10]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.9...v0.10.10
