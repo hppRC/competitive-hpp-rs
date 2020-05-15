@@ -419,12 +419,16 @@ mod test {
 
     #[test]
     fn test_new() {
-        let mi0 = ModInt::new(0);
-        let mi1 = ModInt::new(7);
-        let mi2 = ModInt::new(1000000007);
+        let mi0 = ModInt::new(0u64);
+        let mi1 = ModInt::new(7u64);
+        let mi2 = ModInt::new(1000000007u64);
 
+        assert!(mi0 == 0);
         assert_eq!(mi0, ModInt::new(0));
         assert_eq!(mi1 + mi2, ModInt::new(7));
+        assert_eq!(mi0 - mi1, ModInt::new(1000000007 - 7));
+        assert_eq!(100 * mi1, ModInt::new(700u64));
+        assert_eq!(100u64 * mi1 * 2 / 10 / ModInt::new(5), ModInt::new(28));
     }
     #[test]
     fn test_inverse() {
