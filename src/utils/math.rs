@@ -14,14 +14,17 @@ pub trait MathUtils {
 macro_rules! impl_digit_utils(($($ty:ty),*) => {
     $(
         impl MathUtils for $ty {
+            #[inline]
             fn log2_trunc(self) -> Self {
                 (self as f64).log2().trunc() as Self
             }
 
+            #[inline]
             fn sqrt_floor(self) -> Self {
                 (self as f64).sqrt() as Self
             }
 
+            #[inline]
             fn sqrt_ceil(self) -> Self {
                 let tmp = (self as f64).sqrt() as Self;
                 if tmp * tmp == self {

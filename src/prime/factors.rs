@@ -27,6 +27,7 @@ macro_rules! impl_prime_factors(($($ty:ty),*) => {
         impl Factor for $ty {
             /// Find all prime factors of a number
             /// Does not use a `PrimeSet`, but simply counts upwards
+            #[inline]
             fn factors(&self) -> Vec<Self> {
                 if self <= &1 {
                     return Vec::new();
@@ -43,7 +44,9 @@ macro_rules! impl_prime_factors(($($ty:ty),*) => {
                 }
                 lst
             }
+
             /// Find all unique prime factors of a number
+            #[inline]
             fn factors_uniq(&self) -> Vec<Self> {
                 if self <= &1 {
                     return Vec::new();
@@ -67,6 +70,7 @@ macro_rules! impl_prime_factors(($($ty:ty),*) => {
                 lst
             }
 
+            #[inline]
             fn factors_map(&self) -> HashMap<Self, Self> {
                 let mut facs: HashMap<Self, Self> = HashMap::new();
                 let mut n = *self;
@@ -83,7 +87,9 @@ macro_rules! impl_prime_factors(($($ty:ty),*) => {
                 *facs.entry(n).or_insert(0) += 1;
                 facs
             }
+
             /// Test whether a number is prime. Checks every odd number up to `sqrt(n)`.
+            #[inline]
             fn is_prime(&self) -> bool {
                 if self <= &1 {
                     return false;
@@ -91,6 +97,7 @@ macro_rules! impl_prime_factors(($($ty:ty),*) => {
                 (*self).first_factor() == *self
             }
 
+            #[inline]
             fn first_factor(&self) -> Self {
                 if *self % 2 == 0 {
                     return 2;

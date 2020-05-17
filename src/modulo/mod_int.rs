@@ -70,7 +70,6 @@ where
         ret
     }
 
-    #[inline]
     fn static_inverse_with(n: T, modulo: T) -> T {
         let ExtendedGcd { x, .. } = n.to_i64().unwrap().extended_gcd(&modulo.to_i64().unwrap());
 

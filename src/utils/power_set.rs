@@ -8,6 +8,7 @@ impl<T> PowerSetTrait<T> for Vec<T>
 where
     T: Clone,
 {
+    #[inline]
     fn power_set(&self) -> Vec<Vec<T>> {
         let n = self.len();
         (0..1 << n)
@@ -31,6 +32,7 @@ where
     K: Clone,
 {
     /// Unspecified order
+    #[inline]
     fn power_set(&self) -> Vec<Vec<K>> {
         let n = self.len();
         let v: Vec<_> = self.iter().collect();

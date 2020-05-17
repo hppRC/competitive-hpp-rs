@@ -9,22 +9,27 @@ pub trait DigitUtils {
 macro_rules! impl_digit_utils(($($ty:ty),*) => {
     $(
         impl DigitUtils for $ty {
+            #[inline]
             fn digit(self) -> u32 {
                 (self as f64).log10().trunc() as u32 + 1
             }
 
+            #[inline]
             fn leftmost_digit(self) -> Self {
                 (self / (10 as Self).pow(self.digit() - 1))
             }
 
+            #[inline]
             fn rightmost_digit(self) -> Self {
                 (self % 10)
             }
 
+            #[inline]
             fn nth_digit(self, n:u32) -> Self {
                 ((self / (10 as Self).pow(n - 1)) % 10)
             }
 
+            #[inline]
             fn digit_sum(self) -> Self {
                 (0..self.digit()).fold((0, self),|(sum, x), _| (sum + x%10, x/10)).0
             }
