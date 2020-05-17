@@ -1,6 +1,15 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Solve
+- :shirt: lint error
+
+
+<a name="v0.10.19"></a>
+## [v0.10.19] - 2020-05-18
+### Update
+- :tada: package version
+
 
 <a name="v0.10.18"></a>
 ## [v0.10.18] - 2020-05-18
@@ -509,7 +518,8 @@
 - :tada: commit
 
 
-[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.18...HEAD
+[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.19...HEAD
+[v0.10.19]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.18...v0.10.19
 [v0.10.18]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.17...v0.10.18
 [v0.10.17]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.16...v0.10.17
 [v0.10.16]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.15...v0.10.16
