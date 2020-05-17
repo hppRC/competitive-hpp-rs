@@ -1,5 +1,5 @@
 use num::integer::*;
-use num::traits::{NumOps, PrimInt, ToPrimitive};
+use num::traits::{NumOps, One, PrimInt, ToPrimitive, Zero};
 use std::cmp::Ordering;
 use std::fmt;
 use std::ops::{Add, Div, Mul, Sub};
@@ -27,6 +27,7 @@ pub trait ModIntTrait<T> {
     fn new(n: T) -> Self;
     fn new_with(n: T, modulo: T) -> Self;
     fn inverse(&self) -> Self;
+    fn pow(self, r: T) -> Self;
     fn static_inverse_with(n: T, modulo: T) -> T;
 }
 
@@ -54,6 +55,24 @@ where
         }
     }
 
+    fn pow(self, mut r: T) -> Self {
+        let mut k = self;
+        let mut ret = ModInt::new_with(self.value, self.modulo);
+        let zero = T::from(0).unwrap();
+        let two = T::from(2).unwrap();
+        while r > zero {
+            if r % two != zero {
+                ret = ret * k;
+            }
+            r = r / two;
+            k = k * k;
+        }
+        ModInt {
+            value: r,
+            modulo: self.modulo,
+        }
+    }
+
     #[inline]
     fn static_inverse_with(n: T, modulo: T) -> T {
         let ExtendedGcd { x, .. } = n.to_i64().unwrap().extended_gcd(&modulo.to_i64().unwrap());
@@ -64,6 +83,40 @@ where
             x
         })
         .unwrap()
+    }
+}
+
+impl<T> Zero for ModInt<T>
+where
+    T: PrimInt,
+{
+    fn zero() -> Self {
+        ModInt {
+            value: T::from(0).unwrap(),
+            modulo: T::from(1000000007).unwrap(),
+        }
+    }
+
+    fn is_zero(&self) -> bool {
+        self.value == T::from(0).unwrap()
+    }
+}
+
+impl<T> One for ModInt<T>
+where
+    T: PrimInt,
+{
+    fn one() -> Self {
+        ModInt {
+            value: T::from(1).unwrap(),
+            modulo: T::from(1000000007).unwrap(),
+        }
+    }
+    fn is_one(&self) -> bool
+    where
+        Self: PartialEq,
+    {
+        self.value == T::from(1).unwrap()
     }
 }
 
