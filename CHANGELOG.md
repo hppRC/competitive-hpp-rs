@@ -2,7 +2,16 @@
 ## [Unreleased]
 
 ### Bug
+- :bug: Fix
+
+
+<a name="v0.10.17"></a>
+## [v0.10.17] - 2020-05-18
+### Bug
 - :sparkles: fix
+
+### Update
+- :tada: package version
 
 
 <a name="v0.10.16"></a>
@@ -494,7 +503,8 @@
 - :tada: commit
 
 
-[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.16...HEAD
+[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.17...HEAD
+[v0.10.17]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.16...v0.10.17
 [v0.10.16]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.15...v0.10.16
 [v0.10.15]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.14...v0.10.15
 [v0.10.14]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.13...v0.10.14
