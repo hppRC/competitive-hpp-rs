@@ -5,6 +5,15 @@
 - :shirt: lint error
 
 
+<a name="v0.10.20"></a>
+## [v0.10.20] - 2020-05-18
+### Solve
+- :shirt: lint error
+
+### Update
+- :tada: package version
+
+
 <a name="v0.10.19"></a>
 ## [v0.10.19] - 2020-05-18
 ### Update
@@ -518,7 +527,8 @@
 - :tada: commit
 
 
-[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.19...HEAD
+[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.20...HEAD
+[v0.10.20]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.19...v0.10.20
 [v0.10.19]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.18...v0.10.19
 [v0.10.18]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.17...v0.10.18
 [v0.10.17]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.16...v0.10.17
