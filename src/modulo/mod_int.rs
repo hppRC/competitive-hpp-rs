@@ -67,10 +67,7 @@ where
             r = r / two;
             k = k * k;
         }
-        ModInt {
-            value: r,
-            modulo: self.modulo,
-        }
+        ret
     }
 
     #[inline]
