@@ -462,7 +462,7 @@ mod test {
         assert_eq!(7usize + mi0, ModInt::new_with(0, MOD));
         assert_eq!(15usize + mi0, ModInt::new_with(1, MOD));
         assert_eq!(mi0 - 4, ModInt::new_with(3, MOD));
-        assert_eq!(mi0 - mi0, ModInt::new_with(0, MOD));
+        assert_eq!(mi0 - ModInt::new_with(0, MOD), ModInt::new_with(0, MOD));
         assert_eq!(7usize - mi0, ModInt::new_with(0, MOD));
     }
 
