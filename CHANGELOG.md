@@ -1,6 +1,15 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Add
+- :sparkles: pow function
+
+
+<a name="v0.10.15"></a>
+## [v0.10.15] - 2020-05-16
+### Update
+- :tada: package version
+
 
 <a name="v0.10.14"></a>
 ## [v0.10.14] - 2020-05-15
@@ -476,7 +485,8 @@
 - :tada: commit
 
 
-[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.14...HEAD
+[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.15...HEAD
+[v0.10.15]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.14...v0.10.15
 [v0.10.14]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.13...v0.10.14
 [v0.10.13]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.12...v0.10.13
 [v0.10.12]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.11...v0.10.12
