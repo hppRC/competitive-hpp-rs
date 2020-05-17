@@ -57,7 +57,7 @@ where
 
     fn pow(self, mut r: T) -> Self {
         let mut k = self;
-        let mut ret = ModInt::new_with(self.value, self.modulo);
+        let mut ret = ModInt::new_with(T::from(1).unwrap(), self.modulo);
         let zero = T::from(0).unwrap();
         let two = T::from(2).unwrap();
         while r > zero {
