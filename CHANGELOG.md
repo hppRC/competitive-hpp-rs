@@ -1,8 +1,14 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+<a name="v0.10.18"></a>
+## [v0.10.18] - 2020-05-18
 ### Bug
 - :bug: Fix
+
+### Update
+- :tada: package version
 
 
 <a name="v0.10.17"></a>
@@ -503,7 +509,8 @@
 - :tada: commit
 
 
-[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.17...HEAD
+[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.18...HEAD
+[v0.10.18]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.17...v0.10.18
 [v0.10.17]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.16...v0.10.17
 [v0.10.16]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.15...v0.10.16
 [v0.10.15]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.14...v0.10.15
