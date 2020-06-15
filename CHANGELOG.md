@@ -1,8 +1,17 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Add
+- :sparkles: btree utils
+
+
+<a name="v0.10.21"></a>
+## [v0.10.21] - 2020-05-18
 ### Solve
 - :shirt: lint error
+
+### Update
+- :tada: package version
 
 
 <a name="v0.10.20"></a>
@@ -527,7 +536,8 @@
 - :tada: commit
 
 
-[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.20...HEAD
+[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.21...HEAD
+[v0.10.21]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.20...v0.10.21
 [v0.10.20]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.19...v0.10.20
 [v0.10.19]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.18...v0.10.19
 [v0.10.18]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.17...v0.10.18
