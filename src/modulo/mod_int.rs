@@ -2,7 +2,7 @@ use num::integer::*;
 use num::traits::{NumOps, One, PrimInt, ToPrimitive, Zero};
 use std::cmp::Ordering;
 use std::fmt;
-use std::ops::{Add, Div, Mul, Sub};
+use std::ops::{Add, AddAssign, Div, Mul, Sub, SubAssign};
 
 /// ## Example
 /// ```
@@ -355,6 +355,58 @@ macro_rules! impl_modint_div(($($ty:ty),*) => {
 
 impl_modint_div!(i8, i16, i32, i64, u8, u16, u32, u64, isize, usize);
 
+impl<T> AddAssign<T> for ModInt<T>
+where
+    T: PrimInt,
+{
+    fn add_assign(&mut self, rhs: T) {
+        (*self).value = if self.value + rhs >= self.modulo {
+            (self.value + rhs) % self.modulo
+        } else {
+            self.value + rhs
+        }
+    }
+}
+
+impl<T> AddAssign<ModInt<T>> for ModInt<T>
+where
+    T: PrimInt,
+{
+    fn add_assign(&mut self, other: ModInt<T>) {
+        (*self).value = if self.value + other.value >= self.modulo {
+            (self.value + other.value) % self.modulo
+        } else {
+            self.value + other.value
+        }
+    }
+}
+
+impl<T> SubAssign<T> for ModInt<T>
+where
+    T: PrimInt,
+{
+    fn sub_assign(&mut self, rhs: T) {
+        (*self).value = if self.value < rhs {
+            self.value + self.modulo - rhs
+        } else {
+            self.value - rhs
+        }
+    }
+}
+
+impl<T> SubAssign<ModInt<T>> for ModInt<T>
+where
+    T: PrimInt,
+{
+    fn sub_assign(&mut self, other: ModInt<T>) {
+        (*self).value = if self.value < other.value {
+            self.value + self.modulo - other.value
+        } else {
+            self.value - other.value
+        }
+    }
+}
+
 impl<T> PartialEq<T> for ModInt<T>
 where
     T: PrimInt,
@@ -513,6 +565,21 @@ mod test {
         assert_eq!(2, ModInt::new_with(3, MOD) * ModInt::new_with(5, MOD));
         assert_eq!(2, ModInt::new_with(3, MOD) * 5);
         assert_eq!(2, 3 * ModInt::new_with(5, MOD));
+    }
+
+    #[test]
+    fn test_assign() {
+        const MOD: u64 = 13;
+
+        let mut t = ModInt::new_with(3, MOD) + ModInt::new_with(5, MOD);
+        t += 7;
+        assert_eq!(2, t);
+        t -= 4;
+        assert_eq!(11, t);
+        t += ModInt::new_with(5, MOD);
+        assert_eq!(3, t);
+        t -= ModInt::new_with(20, MOD);
+        assert_eq!(9, t);
     }
 
     #[test]
