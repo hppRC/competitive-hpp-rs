@@ -1,6 +1,6 @@
 [package]
 name = "competitive-hpp"
-version = "0.10.22"
+version = "0.10.23"
 authors = ["hppRC <hpp.ricecake@gmail.com>"]
 edition = "2018"
 description = "Competitive Programming Library for AtCoder with Rust"

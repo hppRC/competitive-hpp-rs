@@ -2,7 +2,16 @@
 ## [Unreleased]
 
 ### Add
+- :sparkles: ModInt assign
+
+
+<a name="v0.10.22"></a>
+## [v0.10.22] - 2020-06-15
+### Add
 - :sparkles: btree utils
+
+### Update
+- :tada: package version
 
 
 <a name="v0.10.21"></a>
@@ -536,7 +545,8 @@
 - :tada: commit
 
 
-[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.21...HEAD
+[Unreleased]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.22...HEAD
+[v0.10.22]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.21...v0.10.22
 [v0.10.21]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.20...v0.10.21
 [v0.10.20]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.19...v0.10.20
 [v0.10.19]: https://github.com/hppRC/competitive-hpp-rs/compare/v0.10.18...v0.10.19
