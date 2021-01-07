@@ -13,7 +13,7 @@ keywords = []
 # homepage = "<url-to-homepage>"
 # documentation = "<url-to-documentation>"
 [dependencies]
-itertools = "0.9.0"
+itertools = "0.10.0"
 memoise = "0.3.2"
 num = "0.2.1"
 proconio = { version = "0.4.1", features = ["derive"] }
