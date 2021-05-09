@@ -20,7 +20,7 @@ proconio = { version = "0.4.1", features = ["derive"] }
 # 挿入順を保つ HashMap を提供
 indexmap = "1.3.2"
 superslice = "1.0.0"
-typenum = "1.12.0"
+typenum = "1.13.0"
 cargo-husky = "1.5.0"
 itertools-num = "0.1.3"
 maplit = "1.0.2"
